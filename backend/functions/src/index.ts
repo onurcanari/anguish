@@ -19,11 +19,11 @@ exports.getPosts = functions.https.onCall(async (data, context) => {
   const userId = getUserId(context);
   let createdAt: Date | null = null;
 
-  if (data.createdAt) {
+  if (data?.createdAt) {
     createdAt = new Date(data.createdAt);
   }
 
-  return postService.getPosts(userId, createdAt, data.tag);
+  return postService.getPosts(userId, createdAt, data?.tag);
 });
 
 exports.deletePost = functions.https.onCall((data, context) => {

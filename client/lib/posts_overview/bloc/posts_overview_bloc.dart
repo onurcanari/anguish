@@ -1,6 +1,5 @@
 import 'package:bloc/bloc.dart';
 import 'package:depression/models/models.dart';
-import 'package:depression/posts_overview/post_overview.dart';
 import 'package:depression/repository/post_repository.dart';
 import 'package:meta/meta.dart';
 
@@ -13,8 +12,12 @@ class PostsOverviewBloc extends Bloc<PostsOverviewEvent, PostsOverviewState> {
     on<PostOverviewFetch>((event, emit) async {
       emit(PostsOverviewInitial());
       try {
-        final posts = await postRepository.getPosts();
-        emit(PostsOverviewSuccess(posts: [], fetchMore: false));
+        final postsResponse = await postRepository.getPosts();
+        emit(
+          PostsOverviewSuccess(
+              posts: postsResponse.items,
+              fetchMore: postsResponse.fetchNextPage),
+        );
       } catch (e) {
         emit(PostsOverviewFailure(e.toString()));
       }

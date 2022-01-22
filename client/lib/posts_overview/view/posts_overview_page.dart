@@ -32,9 +32,12 @@ class PostsOverviewView extends StatelessWidget {
             itemCount: state.posts.length,
             itemBuilder: (context, index) {
               final post = state.posts[index];
-              return ListTile(
-                title: Text(post.content),
-                subtitle: Text(post.reactions.toString()),
+              return Padding(
+                padding: const EdgeInsets.all(8.0),
+                child: ListTile(
+                  title: Text(post.content),
+                  subtitle: Text(post.reactions.toString()),
+                ),
               );
             },
           );

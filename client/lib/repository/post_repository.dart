@@ -15,9 +15,10 @@ class PostRepository {
   late HttpsCallable _reactToPostCallable;
 
   Future<PagedPostsResponse> getPosts() async {
-    final postResponse = await getPost();
-    final httpsCallableResult = await _getPostsCallable<Object>();
-    return PagedPostsResponse.fromMap(const <String, dynamic>{});
+    final httpsCallableResult =
+        await _getPostsCallable<Map<dynamic, dynamic>>();
+    final pagedPostsMap = Map<String, dynamic>.from(httpsCallableResult.data);
+    return PagedPostsResponse.fromMap(pagedPostsMap);
   }
 
   Future<PagedPostsResponse> getPost() async {

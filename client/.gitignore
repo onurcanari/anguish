@@ -55,7 +55,7 @@ linked_*.ds
 unlinked.ds
 unlinked_spec.ds
 .fvm/
-./lib/firebase_options.dart
+lib/firebase_options.dart
 
 # Android related
 **/android/**/gradle-wrapper.jar

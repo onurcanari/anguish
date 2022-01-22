@@ -17,8 +17,8 @@ class Post extends Equatable {
         tags = List<int>.from(map['tags'] as List),
         createdAt = map['createdAt'] as String,
         anonymous = map['anonymous'] as bool,
-        givenReactionId = map['givenReactionId'] as int,
-        reactions = map['reactions'] as Map<String, int>;
+        givenReactionId = map['givenReactionId'] as int?,
+        reactions = Map<String, int?>.from(map['reactions'] as Map);
 
   final String id;
   final String content;
@@ -26,7 +26,7 @@ class Post extends Equatable {
   final String createdAt;
   final bool anonymous;
   final int? givenReactionId;
-  final Map<String, int>? reactions;
+  final Map<String, int?>? reactions;
 
   @override
   List<Object?> get props => [

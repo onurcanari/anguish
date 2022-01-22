@@ -15,8 +15,9 @@ class PagedPostsResponse extends Equatable {
     return PagedPostsResponse(
       numberOfItems: map['numberOfItems'] as int,
       fetchNextPage: map['fetchNextPage'] as bool,
-      items: (map['items'] as List<Map<String, dynamic>>) 
-          .map((e) => Post.fromMap(e))
+      items: (map['items'] as List)
+          .cast<Map>()
+          .map((item) => Post.fromMap(Map<String, dynamic>.from(item)))
           .toList(),
     );
   }
