@@ -29,6 +29,13 @@ packages:
       url: "https://pub.dartlang.org"
     source: hosted
     version: "2.8.2"
+  authentication_repository:
+    dependency: "direct main"
+    description:
+      path: authentication_repository
+      relative: true
+    source: path
+    version: "1.0.0+1"
   bloc:
     dependency: "direct main"
     description:
