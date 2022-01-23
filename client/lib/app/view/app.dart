@@ -7,11 +7,11 @@
 
 import 'package:depression/l10n/l10n.dart';
 import 'package:depression/posts_overview/post_overview.dart';
-import 'package:depression/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:google_nav_bar/google_nav_bar.dart';
+import 'package:post_repository/post_repository.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);

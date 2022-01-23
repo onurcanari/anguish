@@ -21,6 +21,8 @@ dependencies:
   google_nav_bar: ^5.0.5
   authentication_repository:
     path: authentication_repository/
+  post_repository:
+    path: post_repository/
 
 dev_dependencies:
   bloc_test: ^9.0.2

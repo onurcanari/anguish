@@ -1,7 +1,6 @@
 import 'package:bloc/bloc.dart';
-import 'package:depression/models/models.dart';
-import 'package:depression/repository/post_repository.dart';
 import 'package:meta/meta.dart';
+import 'package:post_repository/post_repository.dart';
 
 part 'posts_overview_event.dart';
 part 'posts_overview_state.dart';

@@ -1,9 +1,13 @@
 import 'package:cloud_functions/cloud_functions.dart';
-import 'package:depression/models/models.dart';
+import 'package:post_repository/src/models/models.dart';
 
+/// {@template post_repository}
+/// A Very Good Project created by Very Good CLI.
+/// {@endtemplate}
 class PostRepository {
+  /// {@macro post_repository}
   PostRepository() {
-    initializeCallables();
+    _initializeCallables();
   }
 
   final FirebaseFunctions _functions = FirebaseFunctions.instance;
@@ -21,13 +25,13 @@ class PostRepository {
     return PagedPostsResponse.fromMap(pagedPostsMap);
   }
 
-  Future<PagedPostsResponse> getPost() async {
+  Future<Post> getPost() async {
     final httpsCallableResult = await _getPostCallable<String>(
         <String, dynamic>{"postId": "OI53IxXPdydKZjluqhME"});
-    return PagedPostsResponse.fromMap(const <String, dynamic>{});
+    return Post.fromMap(const <String, dynamic>{});
   }
 
-  void initializeCallables() {
+  void _initializeCallables() {
     _createPostCallable = _functions.httpsCallable('reatePost');
     _getPostCallable = _functions.httpsCallable('getPost');
     _getPostsCallable = _functions.httpsCallable('getPosts');

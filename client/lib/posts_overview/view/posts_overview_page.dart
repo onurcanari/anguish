@@ -1,8 +1,8 @@
 import 'package:depression/l10n/l10n.dart';
 import 'package:depression/posts_overview/bloc/posts_overview_bloc.dart';
-import 'package:depression/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:post_repository/post_repository.dart';
 
 class PostsOverviewPage extends StatelessWidget {
   const PostsOverviewPage({Key? key}) : super(key: key);
