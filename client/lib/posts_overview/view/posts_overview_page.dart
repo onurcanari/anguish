@@ -43,24 +43,14 @@ class PostsOverviewView extends StatelessWidget {
           );
         } else if (state is PostsOverviewFailure) {
           return Center(
-            child: Text("l10n.error"),
+            child: Text(l10n.errorMessage),
           );
         } else {
-          return Center(
+          return const Center(
             child: CircularProgressIndicator(),
           );
         }
       }),
     );
-  }
-}
-
-class CounterText extends StatelessWidget {
-  const CounterText({Key? key}) : super(key: key);
-
-  @override
-  Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-    return Text('1', style: theme.textTheme.headline1);
   }
 }

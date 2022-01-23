@@ -11,6 +11,7 @@ import 'package:depression/repository/post_repository.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
+import 'package:google_nav_bar/google_nav_bar.dart';
 
 class App extends StatelessWidget {
   const App({Key? key}) : super(key: key);
@@ -35,7 +36,72 @@ class App extends StatelessWidget {
           GlobalMaterialLocalizations.delegate,
         ],
         supportedLocales: AppLocalizations.supportedLocales,
-        home: const PostsOverviewPage(),
+        home: Home(),
+      ),
+    );
+  }
+}
+
+class Home extends StatelessWidget {
+  Home({Key? key}) : super(key: key);
+  final _tabIndex = ValueNotifier<int>(0);
+  static const TextStyle optionStyle =
+      TextStyle(fontSize: 30, fontWeight: FontWeight.w600);
+  static const List<Widget> _widgetOptions = <Widget>[
+    PostsOverviewPage(),
+    Text(
+      'Likes',
+      style: optionStyle,
+    ),
+    Text(
+      'Search',
+      style: optionStyle,
+    ),
+    Text(
+      'Profile',
+      style: optionStyle,
+    ),
+  ];
+
+  @override
+  Widget build(BuildContext context) {
+    return ValueListenableBuilder(
+      valueListenable: _tabIndex,
+      builder: (builder, i, widget) => Scaffold(
+        body: SafeArea(
+          child: _widgetOptions.elementAt(_tabIndex.value),
+        ),
+        bottomNavigationBar: GNav(
+          rippleColor: Colors.grey[300]!,
+          hoverColor: Colors.grey[100]!,
+          gap: 8,
+          activeColor: Colors.black,
+          iconSize: 24,
+          padding: const EdgeInsets.symmetric(horizontal: 20, vertical: 12),
+          duration: const Duration(milliseconds: 300),
+          tabBackgroundColor: Colors.grey[100]!,
+          color: Colors.black,
+          selectedIndex: _tabIndex.value,
+          onTabChange: (index) => _tabIndex.value = index,
+          tabs: const [
+            GButton(
+              icon: Icons.home_filled,
+              text: 'Home',
+            ),
+            GButton(
+              icon: Icons.search,
+              text: 'Search',
+            ),
+            GButton(
+              icon: Icons.brush,
+              text: 'Likes',
+            ),
+            GButton(
+              icon: Icons.account_circle,
+              text: 'Profile',
+            )
+          ],
+        ),
       ),
     );
   }
