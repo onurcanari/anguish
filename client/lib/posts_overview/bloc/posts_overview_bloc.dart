@@ -11,11 +11,13 @@ class PostsOverviewBloc extends Bloc<PostsOverviewEvent, PostsOverviewState> {
     on<PostOverviewFetch>((event, emit) async {
       emit(PostsOverviewInitial());
       try {
-        final postsResponse = await postRepository.getPosts();
+        final postsResponse =
+            await postRepository.getPosts(afterDate: event.afterDate);
         emit(
           PostsOverviewSuccess(
-              posts: postsResponse.items,
-              fetchMore: postsResponse.fetchNextPage),
+            posts: postsResponse.items,
+            fetchMore: postsResponse.fetchNextPage,
+          ),
         );
       } catch (e) {
         emit(PostsOverviewFailure(e.toString()));

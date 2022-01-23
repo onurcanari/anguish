@@ -13,5 +13,7 @@ class PostsOverviewSuccess extends PostsOverviewState {
 }
 
 class PostsOverviewFailure extends PostsOverviewState {
-  PostsOverviewFailure(String string);
+  PostsOverviewFailure(this.errorMessage);
+
+  final String errorMessage;
 }

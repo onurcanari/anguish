@@ -2,7 +2,7 @@ import 'package:cloud_functions/cloud_functions.dart';
 import 'package:post_repository/src/models/models.dart';
 
 /// {@template post_repository}
-/// A Very Good Project created by Very Good CLI.
+/// Post Repository
 /// {@endtemplate}
 class PostRepository {
   /// {@macro post_repository}
@@ -18,16 +18,23 @@ class PostRepository {
   late HttpsCallable _deletePostCallable;
   late HttpsCallable _reactToPostCallable;
 
-  Future<PagedPostsResponse> getPosts() async {
+  /// Gets latest posts.
+  Future<PagedPostsResponse> getPosts({DateTime? afterDate}) async {
+    final parameters = <String, dynamic>{};
+
+    if (afterDate != null) {
+      parameters['afterDate'] = afterDate.toString();
+    }
+
     final httpsCallableResult =
-        await _getPostsCallable<Map<dynamic, dynamic>>();
+        await _getPostsCallable<Map<dynamic, dynamic>>(parameters);
     final pagedPostsMap = Map<String, dynamic>.from(httpsCallableResult.data);
     return PagedPostsResponse.fromMap(pagedPostsMap);
   }
 
-  Future<Post> getPost() async {
-    final httpsCallableResult = await _getPostCallable<String>(
-        <String, dynamic>{"postId": "OI53IxXPdydKZjluqhME"});
+  Future<Post> getPost(String postId) async {
+    final httpsCallableResult =
+        await _getPostCallable<String>(<String, dynamic>{"postId": postId});
     return Post.fromMap(const <String, dynamic>{});
   }
 

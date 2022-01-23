@@ -1,7 +1,7 @@
 import * as functions from "firebase-functions";
 import * as postService from "./service/postService";
 import * as userService from "./service/userService";
-import {Post} from "./model/post";
+import {Post} from "./model";
 
 const USER_ID = "udXtSoxvY5y4o8vucCdKCsj7acQg" as string;
 
@@ -17,13 +17,13 @@ exports.getPost = functions.https.onCall((data, context) => {
 
 exports.getPosts = functions.https.onCall(async (data, context) => {
   const userId = getUserId(context);
-  let createdAt: Date | null = null;
+  let afterDate: Date | null = null;
 
-  if (data?.createdAt) {
-    createdAt = new Date(data.createdAt);
+  if (data?.afterDate) {
+    afterDate = new Date(data.afterDate);
   }
 
-  return postService.getPosts(userId, createdAt, data?.tag);
+  return postService.getPosts(userId, afterDate, data?.tag);
 });
 
 exports.deletePost = functions.https.onCall((data, context) => {

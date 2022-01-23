@@ -31,15 +31,15 @@ async function getPost(userId: string, postId: string) {
   return mapPost(postDocument, reactionId);
 }
 
-async function getPosts(userId: string, createdAt: Date | null, tag: number | null) {
+async function getPosts(userId: string, afterDate: Date | null, tag: number | null) {
   let postDocumentsQuery = getPostsCollection().orderBy("createdAt", "desc")
 
   if (tag) {
     postDocumentsQuery = postDocumentsQuery.where("tags", "array-contains", tag)
   }
 
-  if (createdAt) {
-    postDocumentsQuery = postDocumentsQuery.startAfter(Timestamp.fromDate(createdAt));
+  if (afterDate) {
+    postDocumentsQuery = postDocumentsQuery.startAfter(Timestamp.fromDate(afterDate));
   }
 
   const postDocuments = await postDocumentsQuery.limit(POST_LIMIT).get()

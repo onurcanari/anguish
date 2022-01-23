@@ -19,6 +19,8 @@ dependencies:
     sdk: flutter
   intl: ^0.17.0
   google_nav_bar: ^5.0.5
+  infinite_scroll_pagination: ^3.1.0
+
   authentication_repository:
     path: packages/authentication_repository/
   post_repository:

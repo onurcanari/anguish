@@ -15,7 +15,7 @@ class Post extends Equatable {
       : id = map['id'] as String,
         content = map['content'] as String,
         tags = List<int>.from(map['tags'] as List),
-        createdAt = map['createdAt'] as String,
+        createdAt = DateTime.parse(map['createdAt'] as String),
         anonymous = map['anonymous'] as bool,
         givenReactionId = map['givenReactionId'] as int?,
         reactions = Map<String, int?>.from(map['reactions'] as Map);
@@ -23,7 +23,7 @@ class Post extends Equatable {
   final String id;
   final String content;
   final List<int> tags;
-  final String createdAt;
+  final DateTime createdAt;
   final bool anonymous;
   final int? givenReactionId;
   final Map<String, int?>? reactions;
