@@ -32,7 +32,7 @@ packages:
   authentication_repository:
     dependency: "direct main"
     description:
-      path: authentication_repository
+      path: "packages/authentication_repository"
       relative: true
     source: path
     version: "1.0.0+1"
@@ -374,7 +374,7 @@ packages:
   post_repository:
     dependency: "direct main"
     description:
-      path: post_repository
+      path: "packages/post_repository"
       relative: true
     source: path
     version: "1.0.0+1"
