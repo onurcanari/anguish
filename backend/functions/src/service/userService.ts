@@ -1,6 +1,6 @@
 import {admin} from "../firebase";
 import {firestore} from "firebase-admin";
-import {UpdatePostReactionsAction} from "../model/updatePostReactionsAction";
+import {UpdatePostReactionsAction} from "../model";
 import FieldValue = firestore.FieldValue;
 
 let db = admin.firestore()

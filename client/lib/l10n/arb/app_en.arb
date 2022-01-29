@@ -1,4 +1,7 @@
 {
     "@@locale": "en",
-    "errorMessage": "Error occurred. Try again later."
+    "errorMessage": "Error occurred. Try again later.",
+    "profile": "Profile",
+    "profileDescription": "You don't have to fill this fields.",
+    "feed": "Feed"
 }

@@ -1,4 +1,7 @@
 {
     "@@locale": "tr",
-    "errorMessage": "Bir hata oluştu. Daha sonra tekrar deneyin."
+    "errorMessage": "Bir hata oluştu. Daha sonra tekrar deneyin.",
+    "profile": "Profil",
+    "profileDescription": "Bu alanı doldurmak zorunlu değildir.",
+    "feed": "Akış"
 }

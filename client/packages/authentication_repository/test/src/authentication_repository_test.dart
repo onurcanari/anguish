@@ -1,4 +1,3 @@
-// ignore_for_file: prefer_const_constructors
 import 'package:authentication_repository/authentication_repository.dart';
 import 'package:firebase_auth/firebase_auth.dart' as firebase_auth;
 import 'package:flutter_test/flutter_test.dart';
@@ -17,7 +16,7 @@ void main() {
 
     setUp(() {
       firebaseAuth = MockFirebaseAuth();
-      authenticationRepository = AuthenticationRepository(firebaseAuth);
+      authenticationRepository = AuthenticationRepository(auth: firebaseAuth);
     });
 
     group('signInAnonymously', () {

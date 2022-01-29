@@ -1,12 +1,9 @@
-import {Post} from "../model/post";
-import {Paged} from "../model/paged";
 import {admin} from "../firebase";
 import * as userService from "./userService";
-import {UpdatePostReactionsAction} from "../model/updatePostReactionsAction";
+import {Paged, Post, UpdatePostReactionsAction} from "../model";
 import {firestore} from "firebase-admin";
 import Timestamp = admin.firestore.Timestamp;
 import FieldValue = firestore.FieldValue;
-
 
 const POST_LIMIT = 20;
 let db = admin.firestore()

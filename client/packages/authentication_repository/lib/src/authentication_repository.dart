@@ -23,9 +23,11 @@ class LogOutException implements Exception {
 /// {@endtemplate}
 class AuthenticationRepository {
   /// {@macro authentication_repository}
-  AuthenticationRepository(this._firebaseAuth);
+  AuthenticationRepository({firebase_auth.FirebaseAuth? auth}) {
+    _firebaseAuth = auth ?? firebase_auth.FirebaseAuth.instance;
+  }
 
-  final firebase_auth.FirebaseAuth _firebaseAuth;
+  late final firebase_auth.FirebaseAuth _firebaseAuth;
 
   /// Notifies about changes to the user's state (such as sign-in or sign-out).
   ///
